@@ -74,4 +74,10 @@ RUN apt-get install apt-transport-https ca-certificates gnupg
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 RUN apt-get update -y && apt-get install google-cloud-cli google-cloud-cli-anthos-auth google-cloud-cli-app-engine-go google-cloud-cli-app-engine-grpc google-cloud-cli-app-engine-java google-cloud-cli-app-engine-python google-cloud-cli-app-engine-python-extras google-cloud-cli-bigtable-emulator google-cloud-cli-cbt google-cloud-cli-cloud-build-local google-cloud-cli-cloud-run-proxy google-cloud-cli-config-connector google-cloud-cli-datalab google-cloud-cli-datastore-emulator google-cloud-cli-firestore-emulator google-cloud-cli-gke-gcloud-auth-plugin google-cloud-cli-kpt google-cloud-cli-kubectl-oidc google-cloud-cli-local-extract google-cloud-cli-minikube google-cloud-cli-nomos google-cloud-cli-pubsub-emulator google-cloud-cli-skaffold google-cloud-cli-spanner-emulator google-cloud-cli-terraform-validator google-cloud-cli-tests kubectl -y
-RUN npm install -g gulp-cli grunt-cli @angular/cli @vue/cli @ionic/cli yarn
+RUN apt-get install nodejs
+RUN npm install -g gulp-cli grunt-cli @angular/cli @vue/cli @ionic/cli
+RUN curl https://baltocdn.com/helm/signing.asc | apt-key add -
+RUN apt-get install apt-transport-https --yes
+RUN echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
+RUN apt-get update
+RUN apt-get install helm
