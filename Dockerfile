@@ -81,3 +81,4 @@ RUN apt-get install apt-transport-https --yes
 RUN echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
 RUN apt-get update
 RUN apt-get install helm
+RUN apt-get install subversion docker.io
