@@ -94,5 +94,8 @@ RUN echo 'export KOTLIN_HOME=/opt/kotlinc' >> /root/.bashrc
 RUN echo 'export PATH="PATH=${PATH}:${GRADLE_HOME}/bin:${KOTLIN_HOME}/bin:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/cmdline-tools/tools/bin:${ANDROID_SDK_ROOT}/platform-tools:${ANDROID_SDK_ROOT}/emulator"' >> /root/.bashrc
 RUN echo 'export LD_LIBRARY_PATH=${ANDROID_SDK_ROOT}/emulator/lib64:${ANDROID_SDK_ROOT}/emulator/lib64/qt/lib' >> /root/.bashrc
 RUN echo 'export QTWEBENGINE_DISABLE_SANDBOX=1' >> /root/.bashrc
-RUN npm install @tray-tecnologia/tray-cli -g
+RUN npm install @tray-tecnologia/tray-cli
 RUN apt install -y mysql-client
+RUN echo "fs.inotify.max_user_instances=524288" >> /etc/sysctl.conf
+RUN echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
+RUN echo "fs.inotify.max_queued_events=524288" >> /etc/sysctl.conf
