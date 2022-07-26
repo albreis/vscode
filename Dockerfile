@@ -96,6 +96,7 @@ RUN echo 'export LD_LIBRARY_PATH=${ANDROID_SDK_ROOT}/emulator/lib64:${ANDROID_SD
 RUN echo 'export QTWEBENGINE_DISABLE_SANDBOX=1' >> /root/.bashrc
 RUN npm install @tray-tecnologia/tray-cli
 RUN apt install -y mysql-client
-RUN echo "fs.inotify.max_user_instances=524288" >> /etc/sysctl.conf
-RUN echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
-RUN echo "fs.inotify.max_queued_events=524288" >> /etc/sysctl.conf
+RUN apt-get update
+RUN apt-get install -y npm
+RUN npm install -g n && n latest 
+RUN npm install -g gulp sass stylus
