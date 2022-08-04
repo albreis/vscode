@@ -101,3 +101,4 @@ RUN apt-get install -y npm
 RUN npm install -g n && n latest 
 RUN npm install -g gulp sass stylus
 RUN apt-get install -y xclip
+RUN usermod --shell /bin/bash www-data
